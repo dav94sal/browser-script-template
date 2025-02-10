@@ -1,2 +1,4 @@
 # pc-startup-script
-A dynamic script that can be tailored to an individuals needs
+
+## Coming soon:
+A dynamic script that will be tailored to an individuals needs
