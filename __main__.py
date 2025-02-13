@@ -1,26 +1,28 @@
 import webbrowser
 import time
-from data import job_dict, mental_health_dict
-from utils import handle_prompt
-
-data = None
+from data import data_list
+from utils import build_prompt
 
 def determine_data():
     """
         A function to determine which data the user wants to use
     """
-
+    prompt = build_prompt(data_list)
     print("Which data set would you like to use? ")
-    data = input('j/jobs or m/mental health: ')
+    user_input = input(prompt)
 
-    if data == job_dict["input_key"]:
-        return job_dict["urls"]
-    elif data == mental_health_dict["input_key"]:
-        return handle_prompt(mental_health_dict["urls"])
-    else:
-        print("Please select a valid option...")
-        time.sleep(1)
-        return determine_data()
+    for i in range(len(data_list)):
+        data = data_list[i]
+
+        if user_input == data["input_key"]:
+            if data["customized"]:
+                return data["customized"](data["urls"])
+            else:
+                return data["urls"]
+
+    print("Please select a valid option...")
+    time.sleep(1)
+    return determine_data()
 
 
 urls = determine_data()
