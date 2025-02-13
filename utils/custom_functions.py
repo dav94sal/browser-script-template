@@ -1,21 +1,26 @@
 import time
+import subprocess
 
-def get_valid_input(urls):
+def get_valid_input(urls, isMaxed):
     """
         A function to determine if the user needs a tab for their Total Behavioral Health appointment
     """
 
-    appt = input('Do you have an appointment today? ')
+    appt = input('\nDo you have an appointment today? ')
 
-    # Continuously prompt user until a valid response is given
+    # Prompt user for a valid response
     if appt != 'n' and appt != 'y':
-        print('Please enter "y" for yes or "n" for no... ')
-        time.sleep(3)
+        err = '\nPlease enter "y" for yes or "n" for no... '
+        if (isMaxed):
+            err = '\nLimit reached, try again\n'
+            subprocess.run("clear", shell=True)
+        print(err)
+        # time.sleep(1)
         return False
 
     if appt == 'y':
         print('Adding Total Behavioral Health tab! ')
-        urls.append("https://total.doxy.me/behavioral")
+        urls.append("https://totalbehavioral.com/")
         time.sleep(1)
         print("sorting urls...")
         urls.sort(reverse=True)
@@ -30,10 +35,12 @@ def handle_prompt(urls):
     limit = 5
     valid_input = None
 
-    while not valid_input:
+    while not valid_input and counter < limit:
+        # print("Counter: ", counter)
         counter = counter + 1
-        if counter >= limit:
-            break
-        valid_input = get_valid_input(urls)
+        valid_input = get_valid_input(urls, counter == limit)
 
-    return valid_input
+    if valid_input:
+        return valid_input
+    else:
+        return []

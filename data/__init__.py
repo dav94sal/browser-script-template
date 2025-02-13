@@ -1,12 +1,12 @@
 # Changes to data must be reflected here!
 # Change variable names to reflect your data
-from .mental_health_data import mental_health_dict
-from .job_seeking_data import job_dict
+from .dict_data_1 import data_1
+from .dict_data_2 import data_2
 
 
 # This list is being used to create your custom prompt,
 # Be sure to update it with the proper data!
 data_list = [
-    job_dict,
-    mental_health_dict
+    data_1,
+    data_2
 ]
