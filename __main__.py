@@ -16,11 +16,13 @@ def determine_data():
 
         if user_input == data["input_key"]:
             if data["customized"]:
-                return data["customized"](data["urls"])
+                urls = data["customized"](data["urls"])
+                if len(urls):
+                    return urls
             else:
                 return data["urls"]
 
-    print("Please select a valid option...")
+    print("Please select a valid option...\n")
     time.sleep(1)
     return determine_data()
 
