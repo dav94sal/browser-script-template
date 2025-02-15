@@ -1,7 +1,7 @@
 def build_prompt(data_list):
     """
         Takes the name and input key of all data sets and joins them together
-        to create an automatic prompt 
+        to create an automatic prompt
     """
     prompt_list = []
 
@@ -11,3 +11,12 @@ def build_prompt(data_list):
         prompt_list.append(cmd)
 
     return ' or '.join(prompt_list) + ': '
+
+
+def get_urls(data):
+    if data["customized"]:
+        urls = data["customized"](data["urls"])
+        if len(urls):
+            return urls
+    else:
+        return data["urls"]
