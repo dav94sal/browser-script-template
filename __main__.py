@@ -1,12 +1,17 @@
 import webbrowser
 import time
 from data import data_list
-from utils import build_prompt
+from utils import build_prompt, get_urls
 
 def determine_data():
     """
         A function to determine which data the user wants to use
     """
+
+    if len(data_list) == 1:
+        data = data_list[0]
+        return get_urls(data)
+
     prompt = build_prompt(data_list)
     print("Which data set would you like to use? ")
     user_input = input(prompt)
@@ -15,12 +20,7 @@ def determine_data():
         data = data_list[i]
 
         if user_input == data["input_key"]:
-            if data["customized"]:
-                urls = data["customized"](data["urls"])
-                if len(urls):
-                    return urls
-            else:
-                return data["urls"]
+            return get_urls(data)
 
     print("Please select a valid option...\n")
     time.sleep(1)
