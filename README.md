@@ -26,6 +26,10 @@ This script is built to handle multiple data-sets. A `determine_data()` function
 prompts the user for their desired data set and returns that data to a variable. If only one dataset exists, 
 the prompt is bypassed. Google Chrome is the default browser. 
 
+<div align=center>
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXo1NG40dTNwcGVweDB2d2ZzZmk2ZHV5M2k0MXdlNzRvYjYxaDYzOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iPYNAEd8kKdK3AsMAk/giphy.gif" />
+</div>
+
 > May have to update chrome_path to your specific machine's path or
 > Register a different browser of your choosing. You will need a name and a path to the browsers executable.
 
@@ -95,6 +99,6 @@ work_data_obj = {
 ### Run Your Script
 
 Using Command Prompt or PowerShell, run the script with `python browser-script-template`
-
+Running this script in any shell that is isolated from your Operating system will merely print the urls. 
 
 
